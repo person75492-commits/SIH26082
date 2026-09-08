@@ -1,0 +1,4 @@
+date,predicted_aqi,category,alert
+2024-01-01,348.82,Very Poor,Early warning: reduce outdoor exposure
+2024-01-02,328.73,Very Poor,Early warning: reduce outdoor exposure
+2024-01-03,304.43,Very Poor,Early warning: reduce outdoor exposure

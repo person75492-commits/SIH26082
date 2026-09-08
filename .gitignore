@@ -13,12 +13,11 @@ build/
 venv/
 env/
 
-# Data — raw & large files
+# Data — raw large files only
 data/raw/
-data/processed/*.csv
 
-# Models (large binaries)
-models/*.pkl
+# Models (large binaries) — keep them for deployment
+# models/*.pkl
 
 # IDE
 .vscode/

@@ -1,0 +1,409 @@
+country,state,city,station,last_update,latitude,longitude,pollutant_id,pollutant_min,pollutant_max,pollutant_avg
+India,Delhi,Delhi,"Alipur, Delhi - DPCC",2026-08-09 17:00:00,28.815329,77.15301,OZONE,9.0,26.0,19.0
+India,Delhi,Delhi,"Alipur, Delhi - DPCC",2026-08-09 17:00:00,28.815329,77.15301,CO,33.0,36.0,34.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,NO2,22.0,70.0,43.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,NH3,6.0,16.0,8.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,OZONE,16.0,27.0,23.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,PM2.5,19.0,324.0,133.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,SO2,17.0,45.0,31.0
+India,Delhi,Delhi,"Anand Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.647622,77.315809,CO,49.0,75.0,66.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,PM2.5,30.0,207.0,79.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,OZONE,4.0,5.0,4.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,NO2,15.0,83.0,36.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,NH3,4.0,8.0,5.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,SO2,34.0,39.0,37.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,PM10,82.0,180.0,128.0
+India,Delhi,Delhi,"Ashok Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.695381,77.181665,CO,35.0,47.0,38.0
+India,Delhi,Delhi,"Aya Nagar, Delhi - IITM",2026-08-09 17:00:00,28.4706914,77.1099364,NO2,15.0,52.0,26.0
+India,Delhi,Delhi,"Aya Nagar, Delhi - IITM",2026-08-09 17:00:00,28.4706914,77.1099364,CO,17.0,26.0,21.0
+India,Delhi,Delhi,"Aya Nagar, Delhi - IITM",2026-08-09 17:00:00,28.4706914,77.1099364,OZONE,23.0,41.0,35.0
+India,Delhi,Delhi,"Aya Nagar, Delhi - IITM",2026-08-09 17:00:00,28.4706914,77.1099364,PM2.5,23.0,88.0,51.0
+India,Delhi,Delhi,"Aya Nagar, Delhi - IITM",2026-08-09 17:00:00,28.4706914,77.1099364,PM10,19.0,116.0,75.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,SO2,8.0,9.0,8.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,OZONE,16.0,18.0,16.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,PM2.5,77.0,338.0,195.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,NH3,4.0,5.0,5.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,CO,39.0,43.0,40.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,NO2,4.0,19.0,10.0
+India,Delhi,Delhi,"Bawana, Delhi - DPCC",2026-08-09 17:00:00,28.7762,77.051074,PM10,59.0,155.0,100.0
+India,Delhi,Delhi,"Burari Crossing, Delhi - IITM",2026-08-09 17:00:00,28.7256504,77.2011573,PM2.5,17.0,139.0,72.0
+India,Delhi,Delhi,"Burari Crossing, Delhi - IITM",2026-08-09 17:00:00,28.7256504,77.2011573,PM10,67.0,172.0,109.0
+India,Delhi,Delhi,"Burari Crossing, Delhi - IITM",2026-08-09 17:00:00,28.7256504,77.2011573,CO,6.0,16.0,10.0
+India,Delhi,Delhi,"Burari Crossing, Delhi - IITM",2026-08-09 17:00:00,28.7256504,77.2011573,NO2,4.0,139.0,42.0
+India,Delhi,Delhi,"Burari Crossing, Delhi - IITM",2026-08-09 17:00:00,28.7256504,77.2011573,OZONE,43.0,64.0,56.0
+India,Delhi,Delhi,"CRRI Mathura Road, Delhi - IITM",2026-08-09 17:00:00,28.5512005,77.2735737,PM2.5,40.0,208.0,74.0
+India,Delhi,Delhi,"CRRI Mathura Road, Delhi - IITM",2026-08-09 17:00:00,28.5512005,77.2735737,PM10,92.0,241.0,127.0
+India,Delhi,Delhi,"CRRI Mathura Road, Delhi - IITM",2026-08-09 17:00:00,28.5512005,77.2735737,NO2,1.0,31.0,16.0
+India,Delhi,Delhi,"CRRI Mathura Road, Delhi - IITM",2026-08-09 17:00:00,28.5512005,77.2735737,CO,42.0,71.0,49.0
+India,Delhi,Delhi,"CRRI Mathura Road, Delhi - IITM",2026-08-09 17:00:00,28.5512005,77.2735737,OZONE,23.0,45.0,35.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,CO,48.0,77.0,57.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,PM10,24.0,82.0,46.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,NH3,2.0,6.0,4.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,PM2.5,7.0,46.0,20.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,SO2,4.0,7.0,6.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,OZONE,9.0,10.0,9.0
+India,Delhi,Delhi,"Cantonment Area, Delhi - DPCC",2026-08-09 17:00:00,28.594169,77.1251,NO2,3.0,17.0,8.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,NH3,2.0,12.0,6.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,NO2,7.0,29.0,15.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,OZONE,3.0,44.0,9.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,SO2,16.0,27.0,19.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,CO,53.0,57.0,55.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,PM2.5,50.0,199.0,84.0
+India,Delhi,Delhi,"Chandni Chowk, Delhi - IITM",2026-08-09 17:00:00,28.656756,77.227234,PM10,70.0,229.0,124.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,PM2.5,44.0,167.0,77.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,PM10,62.0,132.0,95.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,SO2,1.0,28.0,4.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,CO,48.0,70.0,55.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,NH3,0.0,2.0,1.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,NO2,6.0,58.0,23.0
+India,Delhi,Delhi,"Commonwealth Sports Complex, Delhi - DPCC",2026-08-09 17:00:00,28.615828,77.271992,OZONE,47.0,92.0,76.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,CO,5.0,16.0,11.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,NH3,2.0,8.0,4.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,PM2.5,46.0,253.0,82.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,NO2,21.0,30.0,28.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,OZONE,15.0,36.0,24.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,PM10,58.0,187.0,105.0
+India,Delhi,Delhi,"DTU, Delhi - CPCB",2026-08-09 17:00:00,28.7500499,77.1112615,SO2,31.0,33.0,32.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,PM10,61.0,169.0,108.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,SO2,3.0,5.0,4.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,OZONE,20.0,31.0,27.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,PM2.5,10.0,160.0,60.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,NO2,11.0,62.0,27.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,CO,24.0,107.0,66.0
+India,Delhi,Delhi,"Dr. Karni Singh Shooting Range, Delhi - DPCC",2026-08-09 17:00:00,28.498571,77.26484,NH3,4.0,5.0,5.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,SO2,14.0,23.0,19.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,PM10,40.0,500.0,176.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,CO,10.0,12.0,11.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,OZONE,17.0,26.0,23.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,PM2.5,15.0,267.0,54.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,NO2,17.0,90.0,35.0
+India,Delhi,Delhi,"Dwarka-Sector 8, Delhi - DPCC ",2026-08-09 17:00:00,28.5710274,77.0719006,NH3,3.0,5.0,4.0
+India,Delhi,Delhi,"IGI Airport (T3), Delhi - IITM",2026-08-09 17:00:00,28.5627763,77.1180053,PM2.5,14.0,71.0,43.0
+India,Delhi,Delhi,"IGI Airport (T3), Delhi - IITM",2026-08-09 17:00:00,28.5627763,77.1180053,PM10,71.0,142.0,99.0
+India,Delhi,Delhi,"IGI Airport (T3), Delhi - IITM",2026-08-09 17:00:00,28.5627763,77.1180053,NO2,76.0,162.0,117.0
+India,Delhi,Delhi,"IGI Airport (T3), Delhi - IITM",2026-08-09 17:00:00,28.5627763,77.1180053,CO,21.0,56.0,35.0
+India,Delhi,Delhi,"IGI Airport (T3), Delhi - IITM",2026-08-09 17:00:00,28.5627763,77.1180053,OZONE,59.0,90.0,80.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,PM10,59.0,136.0,91.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,NO2,5.0,39.0,10.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,CO,47.0,53.0,50.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,NH3,2.0,9.0,4.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,SO2,6.0,7.0,7.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,PM2.5,4.0,44.0,20.0
+India,Delhi,Delhi,"IGNOU_Maidan Garhi, Delhi - DPCC",2026-08-09 17:00:00,28.493624,77.201159,OZONE,7.0,9.0,8.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,PM2.5,23.0,89.0,63.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,NH3,4.0,6.0,5.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,OZONE,13.0,26.0,20.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,SO2,10.0,30.0,19.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,PM10,19.0,103.0,70.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,NO2,45.0,52.0,49.0
+India,Delhi,Delhi,"IHBAS, Dilshad Garden, Delhi - CPCB",2026-08-09 17:00:00,28.6811736,77.3025234,CO,8.0,126.0,94.0
+India,Delhi,Delhi,"IIT Delhi, Delhi - IITM",2026-08-09 17:00:00,28.54246,77.191651,NO2,7.0,55.0,23.0
+India,Delhi,Delhi,"IIT Delhi, Delhi - IITM",2026-08-09 17:00:00,28.54246,77.191651,CO,14.0,20.0,16.0
+India,Delhi,Delhi,"IIT Delhi, Delhi - IITM",2026-08-09 17:00:00,28.54246,77.191651,PM2.5,31.0,116.0,56.0
+India,Delhi,Delhi,"IIT Delhi, Delhi - IITM",2026-08-09 17:00:00,28.54246,77.191651,PM10,88.0,198.0,149.0
+India,Delhi,Delhi,"IIT Delhi, Delhi - IITM",2026-08-09 17:00:00,28.54246,77.191651,OZONE,29.0,41.0,37.0
+India,Delhi,Delhi,"IMD Lodhi Road, Delhi - IITM",2026-08-09 17:00:00,28.5918245,77.2273074,NO2,5.0,44.0,19.0
+India,Delhi,Delhi,"IMD Lodhi Road, Delhi - IITM",2026-08-09 17:00:00,28.5918245,77.2273074,OZONE,51.0,86.0,76.0
+India,Delhi,Delhi,"IMD Lodhi Road, Delhi - IITM",2026-08-09 17:00:00,28.5918245,77.2273074,CO,12.0,17.0,14.0
+India,Delhi,Delhi,"IMD Lodhi Road, Delhi - IITM",2026-08-09 17:00:00,28.5918245,77.2273074,PM2.5,2.0,127.0,57.0
+India,Delhi,Delhi,"IMD Lodhi Road, Delhi - IITM",2026-08-09 17:00:00,28.5918245,77.2273074,PM10,44.0,140.0,96.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,CO,35.0,43.0,39.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,PM10,44.0,143.0,96.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,SO2,0.0,47.0,18.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,PM2.5,27.0,150.0,54.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,NH3,0.0,7.0,5.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,NO2,12.0,110.0,64.0
+India,Delhi,Delhi,"ITO, Delhi - CPCB",2026-08-09 17:00:00,28.628624,77.24106,OZONE,16.0,39.0,27.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,CO,39.0,43.0,41.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,PM10,52.0,119.0,87.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,NH3,0.0,6.0,1.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,OZONE,16.0,24.0,21.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,SO2,3.0,5.0,4.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,NO2,6.0,76.0,30.0
+India,Delhi,Delhi,"JNU, Delhi - DPCC",2026-08-09 17:00:00,28.540721,77.168544,PM2.5,25.0,115.0,60.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,CO,67.0,73.0,69.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,PM2.5,12.0,78.0,41.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,PM10,80.0,344.0,139.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,NH3,10.0,13.0,11.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,OZONE,18.0,21.0,20.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,NO2,18.0,53.0,31.0
+India,Delhi,Delhi,"Jahangirpuri, Delhi - DPCC",2026-08-09 17:00:00,28.73282,77.170633,SO2,29.0,55.0,40.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,PM2.5,27.0,143.0,57.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,CO,39.0,64.0,50.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,OZONE,30.0,42.0,38.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,NO2,9.0,29.0,17.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,SO2,23.0,33.0,27.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,PM10,42.0,169.0,99.0
+India,Delhi,Delhi,"Jawaharlal Nehru Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.58028,77.233829,NH3,5.0,6.0,5.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,NH3,5.0,8.0,5.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,SO2,1.0,5.0,3.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,CO,36.0,49.0,40.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,PM2.5,2.0,85.0,32.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,PM10,35.0,135.0,87.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,NO2,21.0,114.0,55.0
+India,Delhi,Delhi,"Major Dhyan Chand National Stadium, Delhi - DPCC",2026-08-09 17:00:00,28.611281,77.237738,OZONE,14.0,26.0,23.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,NO2,13.0,48.0,24.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,SO2,6.0,13.0,11.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,CO,43.0,53.0,47.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,OZONE,13.0,27.0,23.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,PM2.5,2.0,73.0,32.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,NH3,8.0,11.0,9.0
+India,Delhi,Delhi,"Mandir Marg, Delhi - DPCC",2026-08-09 17:00:00,28.636429,77.201067,PM10,46.0,124.0,96.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,NO2,74.0,97.0,82.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,PM2.5,23.0,140.0,51.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,PM10,89.0,404.0,145.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,NH3,4.0,7.0,5.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,SO2,2.0,15.0,7.0
+India,Delhi,Delhi,"Mundka, Delhi - DPCC",2026-08-09 17:00:00,28.684678,77.076574,CO,31.0,42.0,37.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,NH3,4.0,21.0,8.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,OZONE,14.0,17.0,16.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,NO2,14.0,58.0,36.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,PM2.5,9.0,63.0,29.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,PM10,33.0,110.0,72.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,SO2,1.0,16.0,12.0
+India,Delhi,Delhi,"NSIT Dwarka, Delhi - CPCB",2026-08-09 17:00:00,28.60909,77.0325413,CO,30.0,103.0,75.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,SO2,1.0,3.0,2.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,OZONE,12.0,21.0,17.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,PM2.5,39.0,107.0,57.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,PM10,36.0,114.0,73.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,NO2,4.0,39.0,14.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,NH3,1.0,4.0,2.0
+India,Delhi,Delhi,"NSUT Jaffarpur, Delhi - DPCC",2026-08-09 17:00:00,28.594004,76.909423,CO,40.0,45.0,43.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,NO2,8.0,26.0,14.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,CO,2.0,8.0,4.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,SO2,14.0,18.0,15.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,NH3,4.0,5.0,4.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,OZONE,13.0,27.0,21.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,PM2.5,2.0,70.0,25.0
+India,Delhi,Delhi,"Najafgarh, Delhi - DPCC",2026-08-09 17:00:00,28.570173,76.933762,PM10,13.0,105.0,60.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,PM10,67.0,181.0,117.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,SO2,7.0,19.0,10.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,OZONE,3.0,30.0,18.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,PM2.5,25.0,142.0,75.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,NO2,8.0,19.0,12.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,CO,41.0,51.0,45.0
+India,Delhi,Delhi,"Narela, Delhi - DPCC",2026-08-09 17:00:00,28.822836,77.101981,NH3,1.0,3.0,2.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,NH3,4.0,8.0,6.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,SO2,5.0,109.0,13.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,CO,46.0,54.0,49.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,PM10,68.0,199.0,123.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,NO2,16.0,67.0,40.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,PM2.5,3.0,302.0,84.0
+India,Delhi,Delhi,"Nehru Nagar, Delhi - DPCC",2026-08-09 17:00:00,28.56789,77.250515,OZONE,31.0,55.0,46.0
+India,Delhi,Delhi,"North Campus, DU, Delhi - IITM",2026-08-09 17:00:00,28.6573814,77.1585447,CO,49.0,65.0,54.0
+India,Delhi,Delhi,"North Campus, DU, Delhi - IITM",2026-08-09 17:00:00,28.6573814,77.1585447,OZONE,57.0,125.0,93.0
+India,Delhi,Delhi,"North Campus, DU, Delhi - IITM",2026-08-09 17:00:00,28.6573814,77.1585447,PM2.5,37.0,138.0,71.0
+India,Delhi,Delhi,"North Campus, DU, Delhi - IITM",2026-08-09 17:00:00,28.6573814,77.1585447,NO2,52.0,260.0,118.0
+India,Delhi,Delhi,"North Campus, DU, Delhi - IITM",2026-08-09 17:00:00,28.6573814,77.1585447,PM10,63.0,171.0,114.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,OZONE,13.0,29.0,24.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,PM2.5,30.0,197.0,65.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,PM10,55.0,227.0,121.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,NO2,15.0,73.0,34.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,NH3,2.0,10.0,4.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,SO2,6.0,12.0,9.0
+India,Delhi,Delhi,"Okhla Phase-2, Delhi - DPCC",2026-08-09 17:00:00,28.530785,77.271255,CO,29.0,37.0,31.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,PM2.5,3.0,197.0,49.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,CO,29.0,42.0,33.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,OZONE,12.0,17.0,15.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,NH3,7.0,8.0,8.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,SO2,3.0,7.0,5.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,PM10,56.0,183.0,112.0
+India,Delhi,Delhi,"Patparganj, Delhi - DPCC",2026-08-09 17:00:00,28.623763,77.287209,NO2,14.0,86.0,41.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,NH3,2.0,3.0,2.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,PM2.5,15.0,167.0,60.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,SO2,18.0,56.0,41.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,OZONE,25.0,38.0,33.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,PM10,66.0,222.0,126.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,NO2,24.0,60.0,34.0
+India,Delhi,Delhi,"Punjabi Bagh, Delhi - DPCC",2026-08-09 17:00:00,28.674045,77.131023,CO,47.0,61.0,53.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,NO2,22.0,61.0,39.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,PM2.5,10.0,95.0,55.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,SO2,8.0,23.0,14.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,OZONE,9.0,13.0,11.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,PM10,63.0,230.0,152.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,NH3,1.0,7.0,5.0
+India,Delhi,Delhi,"Pusa, Delhi - DPCC",2026-08-09 17:00:00,28.639652,77.146275,CO,74.0,88.0,79.0
+India,Delhi,Delhi,"Pusa, Delhi - IITM",2026-08-09 17:00:00,28.63611,77.173332,PM2.5,22.0,133.0,66.0
+India,Delhi,Delhi,"Pusa, Delhi - IITM",2026-08-09 17:00:00,28.63611,77.173332,NO2,7.0,98.0,44.0
+India,Delhi,Delhi,"Pusa, Delhi - IITM",2026-08-09 17:00:00,28.63611,77.173332,CO,15.0,22.0,19.0
+India,Delhi,Delhi,"Pusa, Delhi - IITM",2026-08-09 17:00:00,28.63611,77.173332,PM10,55.0,124.0,92.0
+India,Delhi,Delhi,"Pusa, Delhi - IITM",2026-08-09 17:00:00,28.63611,77.173332,OZONE,67.0,159.0,124.0
+India,Delhi,Delhi,"R K Puram, Delhi - DPCC",2026-08-09 17:00:00,28.563262,77.186937,CO,51.0,55.0,52.0
+India,Delhi,Delhi,"R K Puram, Delhi - DPCC",2026-08-09 17:00:00,28.563262,77.186937,OZONE,16.0,48.0,33.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,OZONE,12.0,19.0,16.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,PM10,105.0,252.0,153.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,PM2.5,58.0,310.0,123.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,SO2,9.0,10.0,10.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,CO,32.0,38.0,34.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,NO2,0.0,17.0,6.0
+India,Delhi,Delhi,"Rohini, Delhi - DPCC",2026-08-09 17:00:00,28.732528,77.11992,NH3,2.0,4.0,3.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,OZONE,9.0,11.0,9.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,PM2.5,21.0,111.0,44.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,PM10,50.0,187.0,94.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,NO2,20.0,58.0,38.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,NH3,7.0,16.0,10.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,CO,14.0,68.0,46.0
+India,Delhi,Delhi,"Shadipur, Delhi - CPCB",2026-08-09 17:00:00,28.6514781,77.1473105,SO2,2.0,13.0,8.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,CO,16.0,22.0,18.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,PM10,63.0,172.0,108.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,NO2,37.0,56.0,50.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,NH3,7.0,13.0,8.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,SO2,26.0,57.0,33.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,PM2.5,43.0,167.0,77.0
+India,Delhi,Delhi,"Sirifort, Delhi - CPCB",2026-08-09 17:00:00,28.5504249,77.2159377,OZONE,15.0,18.0,16.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,OZONE,10.0,19.0,15.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,PM2.5,13.0,223.0,84.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,NO2,17.0,59.0,33.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,NH3,11.0,15.0,12.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,PM10,74.0,181.0,119.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,CO,53.0,80.0,63.0
+India,Delhi,Delhi,"Sonia Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.710508,77.249485,SO2,5.0,22.0,11.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,PM2.5,15.0,78.0,51.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,SO2,43.0,47.0,45.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,NO2,7.0,28.0,15.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,NH3,1.0,1.0,1.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,CO,38.0,44.0,40.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,OZONE,16.0,28.0,24.0
+India,Delhi,Delhi,"Sri Aurobindo Marg, Delhi - DPCC",2026-08-09 17:00:00,28.531346,77.190156,PM10,56.0,128.0,94.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,SO2,0.0,2.0,2.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,CO,44.0,54.0,49.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,OZONE,12.0,44.0,23.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,PM2.5,29.0,89.0,58.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,PM10,48.0,117.0,83.0
+India,Delhi,Delhi,"Talkatora Garden, Delhi - DPCC",2026-08-09 17:00:00,28.62181,77.1944633,NO2,8.0,51.0,25.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,NH3,3.0,5.0,4.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,PM2.5,32.0,299.0,78.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,OZONE,10.0,14.0,12.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,SO2,4.0,11.0,7.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,PM10,77.0,255.0,127.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,CO,25.0,78.0,61.0
+India,Delhi,Delhi,"Vivek Vihar, Delhi - DPCC",2026-08-09 17:00:00,28.672342,77.31526,NO2,24.0,91.0,47.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,PM10,85.0,500.0,206.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,NH3,5.0,11.0,7.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,OZONE,6.0,8.0,7.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,PM2.5,42.0,309.0,102.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,NO2,34.0,84.0,56.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,SO2,24.0,31.0,27.0
+India,Delhi,Delhi,"Wazirpur, Delhi - DPCC",2026-08-09 17:00:00,28.699793,77.165453,CO,53.0,60.0,55.0
+India,Haryana,Faridabad,"New Industrial Town, Faridabad - HSPCB",2026-08-09 17:00:00,28.39072,77.30059,OZONE,13.0,14.0,14.0
+India,Haryana,Faridabad,"New Industrial Town, Faridabad - HSPCB",2026-08-09 17:00:00,28.39072,77.30059,CO,12.0,24.0,20.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,NO2,30.0,32.0,31.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,SO2,2.0,12.0,7.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,PM10,54.0,312.0,141.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,CO,52.0,68.0,58.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,OZONE,15.0,16.0,16.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,PM2.5,47.0,401.0,178.0
+India,Haryana,Faridabad,"Sector 11, Faridabad - HSPCB",2026-08-09 17:00:00,28.376058,77.315741,NH3,8.0,9.0,9.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,PM2.5,43.0,93.0,58.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,NO2,36.0,40.0,37.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,OZONE,9.0,57.0,20.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,PM10,51.0,80.0,64.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,CO,24.0,55.0,30.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,NH3,6.0,7.0,6.0
+India,Haryana,Faridabad,"Sector 30, Faridabad - HSPCB",2026-08-09 17:00:00,28.4417,77.3217,SO2,2.0,3.0,2.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,NO2,45.0,108.0,60.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,NH3,0.0,2.0,1.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,PM2.5,10.0,36.0,20.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,PM10,9.0,34.0,20.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,SO2,2.0,5.0,3.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,CO,24.0,40.0,30.0
+India,Uttar Pradesh,Ghaziabad,"Govindpuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.694528,77.494705,OZONE,3.0,19.0,6.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,SO2,11.0,32.0,19.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,NO2,20.0,89.0,41.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,CO,17.0,20.0,19.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,PM10,47.0,215.0,88.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,NH3,2.0,5.0,3.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,PM2.5,43.0,321.0,102.0
+India,Uttar Pradesh,Ghaziabad,"Indirapuram, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646233,77.358075,OZONE,32.0,42.0,38.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,SO2,16.0,23.0,21.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,OZONE,3.0,12.0,8.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,NO2,19.0,87.0,48.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,PM2.5,30.0,322.0,120.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,NH3,2.0,13.0,5.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,CO,44.0,59.0,50.0
+India,Uttar Pradesh,Ghaziabad,"Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.757294,77.278792,PM10,90.0,403.0,179.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,CO,28.0,48.0,36.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,OZONE,30.0,152.0,58.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,PM10,102.0,221.0,150.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,PM2.5,40.0,154.0,82.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,NO2,28.0,91.0,54.0
+India,Uttar Pradesh,Ghaziabad,"Sanjay Nagar, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.685382,77.453839,NH3,5.0,9.0,7.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,PM10,100.0,253.0,145.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,NH3,4.0,9.0,7.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,SO2,4.0,95.0,12.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,OZONE,39.0,136.0,70.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,PM2.5,25.0,307.0,100.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,NO2,27.0,102.0,56.0
+India,Uttar Pradesh,Ghaziabad,"Vasundhara, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.6603346,77.3572563,CO,27.0,41.0,34.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,NO2,20.0,66.0,36.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,NH3,4.0,18.0,9.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,OZONE,10.0,23.0,18.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,SO2,6.0,7.0,7.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,PM2.5,52.0,332.0,121.0
+India,Uttar Pradesh,Ghaziabad,"Ved Vihar-Loni, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.739153,77.273668,PM10,62.0,274.0,118.0
+India,Uttar Pradesh,Ghaziabad,"Wave City, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646675,77.489049,SO2,1.0,3.0,2.0
+India,Uttar Pradesh,Ghaziabad,"Wave City, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646675,77.489049,CO,80.0,94.0,88.0
+India,Uttar Pradesh,Ghaziabad,"Wave City, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646675,77.489049,NO2,15.0,26.0,19.0
+India,Uttar Pradesh,Ghaziabad,"Wave City, Ghaziabad - UPPCB",2026-08-09 17:00:00,28.646675,77.489049,OZONE,9.0,19.0,16.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,SO2,8.0,11.0,10.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,PM10,119.0,500.0,244.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,NO2,13.0,83.0,37.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,NH3,5.0,9.0,6.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,OZONE,30.0,67.0,57.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,PM2.5,36.0,208.0,77.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - III, Greater Noida - UPPCB",2026-08-09 17:00:00,28.47272,77.482,CO,40.0,48.0,43.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,PM2.5,40.0,261.0,88.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,NH3,7.0,9.0,8.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,SO2,3.0,11.0,7.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,PM10,95.0,462.0,200.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,NO2,28.0,103.0,51.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,CO,9.0,17.0,14.0
+India,Uttar Pradesh,Greater Noida,"Knowledge Park - V, Greater Noida - UPPCB",2026-08-09 17:00:00,28.557054,77.453663,OZONE,23.0,63.0,47.0
+India,Haryana,Gurugram,"NISE Gwal Pahari, Gurugram - IITM",2026-08-09 17:00:00,28.422681,77.148944,PM10,62.0,138.0,107.0
+India,Haryana,Gurugram,"NISE Gwal Pahari, Gurugram - IITM",2026-08-09 17:00:00,28.422681,77.148944,NO2,13.0,48.0,24.0
+India,Haryana,Gurugram,"NISE Gwal Pahari, Gurugram - IITM",2026-08-09 17:00:00,28.422681,77.148944,OZONE,30.0,52.0,44.0
+India,Haryana,Gurugram,"NISE Gwal Pahari, Gurugram - IITM",2026-08-09 17:00:00,28.422681,77.148944,PM2.5,32.0,114.0,61.0
+India,Haryana,Gurugram,"NISE Gwal Pahari, Gurugram - IITM",2026-08-09 17:00:00,28.422681,77.148944,CO,24.0,36.0,28.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,PM2.5,30.0,126.0,61.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,OZONE,31.0,81.0,57.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,NO2,23.0,67.0,39.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,NH3,8.0,21.0,13.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,CO,2.0,13.0,6.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,PM10,26.0,97.0,51.0
+India,Haryana,Gurugram,"Sector-51, Gurugram - HSPCB",2026-08-09 17:00:00,28.4227,77.0667,SO2,6.0,10.0,8.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,CO,3.0,28.0,15.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,PM10,52.0,106.0,77.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,NH3,8.0,15.0,11.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,OZONE,9.0,48.0,31.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,PM2.5,49.0,109.0,74.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,SO2,4.0,12.0,8.0
+India,Haryana,Gurugram,"Teri Gram, Gurugram - HSPCB",2026-08-09 17:00:00,28.4275,77.1465,NO2,26.0,54.0,40.0
+India,Haryana,Gurugram,"Vikas Sadan, Gurugram - HSPCB",2026-08-09 17:00:00,28.4501238,77.0263051,NO2,1.0,13.0,5.0
+India,Haryana,Gurugram,"Vikas Sadan, Gurugram - HSPCB",2026-08-09 17:00:00,28.4501238,77.0263051,SO2,2.0,29.0,12.0
+India,Haryana,Gurugram,"Vikas Sadan, Gurugram - HSPCB",2026-08-09 17:00:00,28.4501238,77.0263051,CO,25.0,88.0,47.0
+India,Haryana,Gurugram,"Vikas Sadan, Gurugram - HSPCB",2026-08-09 17:00:00,28.4501238,77.0263051,OZONE,2.0,51.0,33.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,NH3,3.0,3.0,3.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,NO2,16.0,17.0,17.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,PM2.5,30.0,340.0,81.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,SO2,7.0,12.0,10.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,CO,7.0,25.0,14.0
+India,Uttar Pradesh,Noida,"Sector - 125, Noida - UPPCB",2026-08-09 17:00:00,28.5447608,77.3231257,OZONE,14.0,18.0,17.0
+India,Uttar Pradesh,Noida,"Sector - 62, Noida - IITM",2026-08-09 17:00:00,28.6245479,77.3577104,PM10,59.0,188.0,112.0
+India,Uttar Pradesh,Noida,"Sector - 62, Noida - IITM",2026-08-09 17:00:00,28.6245479,77.3577104,NO2,2.0,66.0,31.0
+India,Uttar Pradesh,Noida,"Sector - 62, Noida - IITM",2026-08-09 17:00:00,28.6245479,77.3577104,CO,20.0,36.0,26.0
+India,Uttar Pradesh,Noida,"Sector - 62, Noida - IITM",2026-08-09 17:00:00,28.6245479,77.3577104,PM2.5,8.0,232.0,91.0
+India,Uttar Pradesh,Noida,"Sector - 62, Noida - IITM",2026-08-09 17:00:00,28.6245479,77.3577104,OZONE,20.0,36.0,31.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,NH3,4.0,5.0,5.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,SO2,4.0,10.0,6.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,PM10,62.0,205.0,126.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,PM2.5,10.0,244.0,62.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,CO,44.0,51.0,48.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,OZONE,54.0,106.0,85.0
+India,Uttar Pradesh,Noida,"Sector-1, Noida - UPPCB",2026-08-09 17:00:00,28.5898,77.3101,NO2,8.0,50.0,25.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,PM2.5,70.0,333.0,138.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,NH3,8.0,14.0,10.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,SO2,7.0,16.0,13.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,PM10,91.0,413.0,173.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,NO2,18.0,123.0,57.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,CO,16.0,48.0,36.0
+India,Uttar Pradesh,Noida,"Sector-116, Noida - UPPCB",2026-08-09 17:00:00,28.56923,77.393848,OZONE,41.0,117.0,90.0
