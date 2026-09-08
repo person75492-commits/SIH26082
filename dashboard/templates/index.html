@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AERIS-72 | Delhi NCR Air Pollution Intelligence</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0f1a;--sb:#0d1322;--card:#111827;--card2:#151e2e;
+  --border:#1e2d45;--text:#e2e8f0;--muted:#64748b;
+  --blue:#3b82f6;--accent:#06b6d4;
+  --good:#22c55e;--sat:#84cc16;--mod:#f59e0b;
+  --poor:#f97316;--vpoor:#ef4444;--severe:#a855f7;
+  --r:12px;
+}
+html,body{height:100%;overflow:hidden;font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:13px}
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:196px;min-width:196px;background:var(--sb);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:10}
+.sb-logo{padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sb-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1d4ed8,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+.sb-title{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.4px;line-height:1}
+.sb-sub{font-size:10px;color:var(--muted);margin-top:2px}
+.nav{padding:8px 0;flex:1;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;color:var(--muted);border-left:3px solid transparent;font-size:13px;font-weight:500;transition:all .15s;white-space:nowrap}
+.nav-item:hover{color:var(--text);background:rgba(59,130,246,.06)}
+.nav-item.active{color:#fff;background:rgba(59,130,246,.13);border-left-color:var(--blue)}
+.nav-icon{font-size:14px;width:17px;text-align:center;flex-shrink:0}
+.sb-foot{padding:10px 14px;border-top:1px solid var(--border);font-size:10px;color:var(--muted);line-height:1.7}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{background:var(--sb);border-bottom:1px solid var(--border);padding:0 18px;height:44px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.tb-title{font-size:12px;color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-title strong{color:var(--text)}
+.tb-meta{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.live-pill{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--good)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--good);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.tb-item{font-size:11px;color:var(--muted)}
+.tb-item span{color:var(--text)}
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 14px 18px}
+.scroll::-webkit-scrollbar{width:4px}
+.scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* VIEWS */
+.view{display:none}
+.view.active{display:block;animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+/* METRIC ROW */
+.mrow{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:10px}
+.mc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;cursor:default;transition:border-color .2s}
+.mc:hover{border-color:var(--blue)}
+.mc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.mc-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.mc-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px}
+.mc-val{font-size:26px;font-weight:800;line-height:1;margin:3px 0}
+.mc-unit{font-size:10px;color:var(--muted)}
+.mc-badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;color:#fff;text-transform:uppercase;margin-top:3px}
+.mc-trend{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
+
+/* PANELS */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:9px 13px 7px;border-bottom:1px solid var(--border)}
+.ph h3{font-size:12px;font-weight:700;color:var(--text)}
+.ph-act{font-size:11px;color:var(--blue);cursor:pointer}
+.pb{padding:11px 13px}
+
+/* MAIN GRID */
+.mgrid{display:grid;grid-template-columns:1fr 308px;gap:10px;margin-bottom:10px}
+.lc{display:flex;flex-direction:column;gap:10px}
+.rc{display:flex;flex-direction:column;gap:10px}
+
+/* MAP */
+#live-map{height:360px}
+.map-leg{display:flex;gap:12px;padding:7px 13px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.leg-i{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted)}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* WEATHER ROW */
+.wrow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}
+.wc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:9px 12px}
+.wc-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.wc-val{font-size:18px;font-weight:800;color:var(--text);margin:2px 0}
+.wc-unit{font-size:10px;color:var(--muted)}
+
+/* BOTTOM GRID */
+.bgrid{display:grid;grid-template-columns:1fr 1fr 280px;gap:10px}
+
+/* CHART WRAP */
+.cw{padding:10px 13px 13px;position:relative}
+
+/* ALERTS */
+.alist{padding:4px 0}
+.ai{display:flex;align-items:flex-start;gap:9px;padding:8px 13px;border-bottom:1px solid rgba(30,45,69,.5);cursor:pointer;transition:background .15s}
+.ai:last-child{border-bottom:none}
+.ai:hover{background:rgba(59,130,246,.05)}
+.ai-dot{width:7px;height:7px;border-radius:50%;margin-top:3px;flex-shrink:0}
+.ai-info{flex:1}
+.ai-title{font-size:11px;font-weight:600;color:var(--text)}
+.ai-sub{font-size:10px;color:var(--muted);margin-top:1px}
+.ai-time{font-size:10px;color:var(--muted);flex-shrink:0}
+
+/* HOTSPOT TABLE */
+.hst{width:100%;border-collapse:collapse;font-size:11px}
+.hst th{color:var(--muted);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:7px 10px;border-bottom:1px solid var(--border);text-align:left}
+.hst td{padding:7px 10px;border-bottom:1px solid rgba(30,45,69,.5)}
+.hst tr:last-child td{border-bottom:none}
+.hst tr:hover td{background:rgba(59,130,246,.04)}
+.aqi-pill{display:inline-flex;align-items:center;padding:1px 6px;border-radius:999px;font-size:10px;font-weight:700;color:#fff}
+.s-badge{padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;color:#fff}
+
+/* DRIVER */
+.dlist{padding:8px 13px 10px;display:flex;flex-direction:column;gap:7px}
+.di{display:flex;align-items:center;gap:9px;padding:7px 9px;background:var(--card2);border-radius:8px;border:1px solid var(--border)}
+.di-icon{font-size:18px;width:28px;text-align:center;flex-shrink:0}
+.di-name{font-size:11px;font-weight:600;color:var(--text)}
+.di-desc{font-size:10px;color:var(--muted);margin-top:1px}
+
+/* ACTIONS */
+.act-list{padding:7px 13px 8px;display:flex;flex-direction:column;gap:5px}
+.act-item{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:1px solid rgba(30,45,69,.4);font-size:11px;color:var(--text)}
+.act-item:last-child{border-bottom:none}
+.act-item::before{content:'•';color:var(--accent);font-size:14px}
+.act-cta{margin:6px 13px 10px;padding:10px;background:linear-gradient(135deg,#b91c1c,#7c3aed);border-radius:9px;text-align:center;cursor:pointer;transition:opacity .2s}
+.act-cta:hover{opacity:.88}
+.act-cta-t{font-size:13px;font-weight:800;color:#fff}
+.act-cta-s{font-size:10px;color:rgba(255,255,255,.72);margin-top:2px}
+
+/* FORECAST PAGE */
+.fc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:11px}
+.fcc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
+.fcc-date{font-size:11px;color:var(--muted);margin-bottom:7px}
+.fcc-val{font-size:44px;font-weight:800;line-height:1}
+.fcc-cat{margin-top:7px}
+.fcc-alert{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* HISTORY PAGE */
+.yoy-checks{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.sel{padding:4px 9px;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--text);background:var(--card2);cursor:pointer;outline:none}
+.sel:focus{border-color:var(--blue)}
+.btn{padding:4px 12px;border-radius:6px;border:none;cursor:pointer;font-size:11px;font-weight:600;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn-p{background:var(--blue);color:#fff}
+.btn-g{background:var(--card2);color:var(--text);border:1px solid var(--border)}
+
+/* STATIONS PAGE */
+.st-grid{display:grid;grid-template-columns:1fr 320px;gap:10px;margin-bottom:10px}
+#station-map{height:420px}
+.dtable{width:100%;border-collapse:collapse;font-size:11px}
+.dtable th{background:var(--card2);color:var(--muted);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
+.dtable td{padding:7px 10px;border-bottom:1px solid rgba(30,45,69,.5)}
+.dtable tr:last-child td{border-bottom:none}
+.dtable tr:hover td{background:rgba(59,130,246,.04)}
+.pb-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;color:#fff}
+
+/* XAI PAGE */
+.xai-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.xai-item{margin-bottom:11px}
+.xai-hd{display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px}
+.xai-track{background:var(--border);height:7px;border-radius:4px;overflow:hidden}
+.xai-fill{height:7px;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--accent));width:0;transition:width .9s ease}
+.model-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:10px}
+.mt{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center}
+.mt-val{font-size:20px;font-weight:800;color:var(--blue)}
+.mt-lab{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* SYSTEM PAGE */
+.pipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:10px}
+.pi{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;display:flex;align-items:center;gap:9px}
+.pi-icon{font-size:18px;flex-shrink:0}
+.pi-name{font-size:11px;font-weight:600;color:var(--text)}
+.pi-status{font-size:10px;color:var(--good);font-weight:700}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.mgrid{grid-template-columns:1fr}.rc{display:none}.mrow{grid-template-columns:repeat(3,1fr)}.bgrid{grid-template-columns:1fr 1fr}.st-grid{grid-template-columns:1fr}.xai-grid{grid-template-columns:1fr}}@media(max-width:700px){.sidebar{width:50px;min-width:50px}.sb-title,.sb-sub,.nav-item span{display:none}.mrow{grid-template-columns:1fr 1fr}.bgrid{grid-template-columns:1fr}.wrow{grid-template-columns:repeat(3,1fr)}.fc-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<script type="application/json" id="app-data">
+{
+  "hist_dates":  {{ historical_dates  | tojson }},
+  "hist_values": {{ historical_values | tojson }},
+  "latest_aqi":  {{ latest_aqi }},
+  "latest_cat":  {{ latest_category | tojson }},
+  "latest_date": {{ latest_date | tojson }},
+  "warn":        {{ warnings | tojson }},
+  "factors":     {{ factors  | tojson }}
+}
+</script>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-icon">A</div>
+      <div>
+        <div class="sb-title">AERIS-72</div>
+        <div class="sb-sub">AI Pollution Intelligence</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-item active" data-view="overview"><span class="nav-icon">🏠</span><span>Overview</span></div>
+      <div class="nav-item" data-view="forecast"><span class="nav-icon">🔮</span><span>Forecast</span></div>
+      <div class="nav-item" data-view="history"><span class="nav-icon">📈</span><span>Historical</span></div>
+      <div class="nav-item" data-view="stations"><span class="nav-icon">📍</span><span>Stations</span></div>
+      <div class="nav-item" data-view="xai"><span class="nav-icon">🧠</span><span>AI Insights</span></div>
+      <div class="nav-item" data-view="system"><span class="nav-icon">⚙️</span><span>System</span></div>
+    </nav>
+    <div class="sb-foot">SIH26082<br>Delhi NCR<br>Forecasting System</div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="tb-title"><strong>AI-Powered 72-Hour Air Pollution &amp; Weather-Coupled Forecasting System</strong></div>
+      <div class="tb-meta">
+        <div class="live-pill"><div class="live-dot"></div></div>
+        <div class="tb-item">🕐 <span id="top-time">—</span></div>
+        <div class="tb-item">📅 <span id="top-date">—</span></div>
+      </div>
+    </div>
+
+    <div class="scroll">
+
+      <!-- ═══════ OVERVIEW ═══════ -->
+      <div class="view active" id="view-overview">
+
+        <div class="mrow">
+          <div class="mc">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">AQI — Delhi NCR</div>
+                <div class="mc-val" id="m-aqi-val">—</div>
+                <div class="mc-unit">Index Value</div>
+              </div>
+              <div class="mc-icon" style="background:rgba(239,68,68,.15)">🌫️</div>
+            </div>
+            <span class="mc-badge" id="m-aqi-badge">—</span>
+            <div class="mc-trend" id="m-aqi-trend">—</div>
+          </div>
+          <div class="mc">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">PM2.5 (Avg NCR)</div>
+                <div class="mc-val" id="m-pm25-val">—</div>
+                <div class="mc-unit">µg/m³</div>
+              </div>
+              <div class="mc-icon" style="background:rgba(168,85,247,.15)">💨</div>
+            </div>
+            <div class="mc-trend" id="m-pm25-sub">from stations</div>
+          </div>
+          <div class="mc">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">Forecast D+1</div>
+                <div class="mc-val" id="m-f1-val">—</div>
+                <div class="mc-unit">Predicted AQI</div>
+              </div>
+              <div class="mc-icon" style="background:rgba(6,182,212,.15)">🔮</div>
+            </div>
+            <span class="mc-badge" id="m-f1-badge">—</span>
+            <div class="mc-trend" id="m-f1-date">—</div>
+          </div>
+          <div class="mc">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">Forecast D+2</div>
+                <div class="mc-val" id="m-f2-val">—</div>
+                <div class="mc-unit">Predicted AQI</div>
+              </div>
+              <div class="mc-icon" style="background:rgba(249,115,22,.15)">📅</div>
+            </div>
+            <span class="mc-badge" id="m-f2-badge">—</span>
+            <div class="mc-trend" id="m-f2-date">—</div>
+          </div>
+          <div class="mc">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">Risk Level</div>
+                <div class="mc-val" id="m-risk-val" style="font-size:14px;margin-top:5px">—</div>
+              </div>
+              <div class="mc-icon" style="background:rgba(239,68,68,.15)">🚨</div>
+            </div>
+            <div class="mc-trend" id="m-risk-alert" style="margin-top:3px">—</div>
+          </div>
+
+          <!-- SIMULATION MODE KPI -->
+          <div class="mc" id="sim-card" style="cursor:pointer;border-color:var(--border)" onclick="toggleSim()">
+            <div class="mc-top">
+              <div>
+                <div class="mc-lbl">Simulation Mode</div>
+                <div class="mc-val" id="sim-val" style="font-size:14px;margin-top:5px;color:var(--muted)">OFF</div>
+                <div class="mc-unit" id="sim-unit">Click to simulate</div>
+              </div>
+              <div class="mc-icon" id="sim-icon" style="background:rgba(100,116,139,.15)">🎮</div>
+            </div>
+            <span class="mc-badge" id="sim-badge" style="background:var(--muted);margin-top:3px">Normal</span>
+            <div class="mc-trend" id="sim-desc" style="margin-top:3px;line-height:1.4">Real data mode</div>
+          </div>
+
+        </div>
+
+        <div class="mgrid">
+          <!-- LEFT -->
+          <div class="lc">
+            <div class="panel">
+              <div class="ph">
+                <h3>📡 Delhi-NCR Live Station Map</h3>
+                <span id="st-badge" style="font-size:10px;color:var(--accent)">Loading…</span>
+              </div>
+              <div class="map-leg">
+                <div class="leg-i"><div class="leg-dot" style="background:var(--good)"></div>Good ≤50</div>
+                <div class="leg-i"><div class="leg-dot" style="background:var(--mod)"></div>Moderate ≤200</div>
+                <div class="leg-i"><div class="leg-dot" style="background:var(--poor)"></div>Poor ≤300</div>
+                <div class="leg-i"><div class="leg-dot" style="background:var(--vpoor)"></div>Very Poor ≤400</div>
+                <div class="leg-i"><div class="leg-dot" style="background:var(--severe)"></div>Severe &gt;400</div>
+              </div>
+              <div id="live-map"></div>
+            </div>
+
+            <div class="wrow">
+              <div class="wc"><div class="wc-lbl">Stations</div><div class="wc-val" id="wx-st">—</div><div class="wc-unit">CPCB monitoring</div></div>
+              <div class="wc"><div class="wc-lbl">Avg PM2.5</div><div class="wc-val" id="wx-pm25">—</div><div class="wc-unit">µg/m³ NCR avg</div></div>
+              <div class="wc"><div class="wc-lbl">Avg PM10</div><div class="wc-val" id="wx-pm10">—</div><div class="wc-unit">µg/m³ NCR avg</div></div>
+              <div class="wc"><div class="wc-lbl">Avg NO₂</div><div class="wc-val" id="wx-no2">—</div><div class="wc-unit">µg/m³ NCR avg</div></div>
+              <div class="wc"><div class="wc-lbl">Data Days</div><div class="wc-val">3,143</div><div class="wc-unit">May 2015 – Dec 2023</div></div>
+            </div>
+
+            <div class="bgrid">
+              <div class="panel">
+                <div class="ph"><h3>⚡ What's Driving the Pollution?</h3></div>
+                <div class="dlist">
+                  <div class="di"><div class="di-icon">📅</div><div><div class="di-name">Seasonal Pattern</div><div class="di-desc">Winter months (Nov–Feb) cause sharp AQI spikes</div></div></div>
+                  <div class="di"><div class="di-icon">🔁</div><div><div class="di-name">AQI Persistence</div><div class="di-desc">Yesterday's AQI drives 20.7% of today's forecast</div></div></div>
+                  <div class="di"><div class="di-icon">📊</div><div><div class="di-name">7-Day Rolling Mean</div><div class="di-desc">Dominant feature — 51.4% of model importance</div></div></div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="ph"><h3>📉 30-Day AQI Trend</h3></div>
+                <div class="cw" style="height:152px"><canvas id="trendChart"></canvas></div>
+              </div>
+              <div class="panel">
+                <div class="ph"><h3>✅ Recommended Actions</h3></div>
+                <div class="act-list">
+                  <div class="act-item">Issue early warning for Delhi-NCR</div>
+                  <div class="act-item">Prepare schools &amp; hospitals</div>
+                  <div class="act-item">Monitor fire activity in Punjab/Haryana</div>
+                  <div class="act-item">Coordinate with authorities</div>
+                </div>
+                <div class="act-cta">
+                  <div class="act-cta-t">Prepare Now</div>
+                  <div class="act-cta-s" id="cta-sub">Avoid Severe Impact</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="rc">
+            <div class="panel">
+              <div class="ph"><h3>🔔 Active Alerts</h3><span class="ph-act">View All</span></div>
+              <div class="alist" id="alert-list"></div>
+            </div>
+            <div class="panel">
+              <div class="ph"><h3>🔥 Hotspots &amp; AQI by Region</h3><span class="ph-act">View All</span></div>
+              <div style="overflow-x:auto">
+                <table class="hst">
+                  <thead><tr><th>Region</th><th>AQI</th><th>Trend</th><th>Status</th></tr></thead>
+                  <tbody id="hotspot-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="ph"><h3>⏱ 3-Day Forecast</h3><span class="ph-act" onclick="switchView('forecast')">View Details</span></div>
+              <div class="cw" style="height:168px"><canvas id="fc72Chart"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /overview -->
+
+
+      <!-- ═══════ FORECAST ═══════ -->
+      <div class="view" id="view-forecast">
+        <div class="fc-cards">
+          <div class="panel fcc"><div class="fcc-date" id="fd0-date">—</div><div class="fcc-val" id="fd0-val">—</div><div class="fcc-cat"><span class="mc-badge" id="fd0-badge">—</span></div><div class="fcc-alert" id="fd0-alert">—</div></div>
+          <div class="panel fcc"><div class="fcc-date" id="fd1-date">—</div><div class="fcc-val" id="fd1-val">—</div><div class="fcc-cat"><span class="mc-badge" id="fd1-badge">—</span></div><div class="fcc-alert" id="fd1-alert">—</div></div>
+          <div class="panel fcc"><div class="fcc-date" id="fd2-date">—</div><div class="fcc-val" id="fd2-val">—</div><div class="fcc-cat"><span class="mc-badge" id="fd2-badge">—</span></div><div class="fcc-alert" id="fd2-alert">—</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+          <div class="panel"><div class="ph"><h3>📉 Forecast vs. Recent History</h3></div><div class="cw" style="height:250px"><canvas id="fcLineChart"></canvas></div></div>
+          <div class="panel"><div class="ph"><h3>📊 3-Day Forecast Bars</h3></div><div class="cw" style="height:250px"><canvas id="fcBarChart"></canvas></div></div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>⚠️ Early Warning Alerts</h3></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:11px 13px" id="warn-cards"></div>
+        </div>
+      </div>
+
+
+      <!-- ═══════ HISTORICAL ═══════ -->
+      <div class="view" id="view-history">
+        <div class="panel" style="margin-bottom:10px">
+          <div class="ph">
+            <h3>📈 Historical AQI — 2015 to 2023</h3>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              <select class="sel" id="hist-from"><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option></select>
+              <span style="color:var(--muted);font-size:11px">→</span>
+              <select class="sel" id="hist-to"><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option value="2023" selected>2023</option></select>
+              <button class="btn btn-p" onclick="applyHistFilter()">Apply</button>
+              <button class="btn btn-g" onclick="resetHistFilter()">Reset</button>
+            </div>
+          </div>
+          <div class="cw" style="height:270px"><canvas id="histChart"></canvas></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+          <div class="panel">
+            <div class="ph"><h3>📆 Year-over-Year Comparison</h3><div class="yoy-checks" id="yoy-checks"></div></div>
+            <div class="cw" style="height:250px"><canvas id="yoyChart"></canvas></div>
+          </div>
+          <div class="panel">
+            <div class="ph"><h3>🌡 Monthly Seasonal Pattern</h3></div>
+            <div class="cw" style="height:250px"><canvas id="monthlyChart"></canvas></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="panel"><div class="ph"><h3>📅 AQI by Day of Week</h3></div><div class="cw" style="height:210px"><canvas id="dowChart"></canvas></div></div>
+          <div class="panel"><div class="ph"><h3>🍩 Category Distribution</h3></div><div class="cw" style="height:210px"><canvas id="donutChart"></canvas></div></div>
+        </div>
+      </div>
+
+
+      <!-- ═══════ STATIONS ═══════ -->
+      <div class="view" id="view-stations">
+
+        <!-- Pollutant summary tiles -->
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:10px">
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">PM2.5</div><div class="mc-val" id="pt-pm25" style="font-size:18px;color:#ef4444">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">PM10</div><div class="mc-val" id="pt-pm10" style="font-size:18px;color:#f97316">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">NO₂</div><div class="mc-val" id="pt-no2" style="font-size:18px;color:#f59e0b">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">SO₂</div><div class="mc-val" id="pt-so2" style="font-size:18px;color:#84cc16">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">CO</div><div class="mc-val" id="pt-co" style="font-size:18px;color:#3b82f6">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">OZONE</div><div class="mc-val" id="pt-ozone" style="font-size:18px;color:#8b5cf6">—</div><div class="mc-unit">µg/m³ avg</div></div>
+          <div class="mc" style="padding:9px 10px"><div class="mc-lbl">NH₃</div><div class="mc-val" id="pt-nh3" style="font-size:18px;color:#ec4899">—</div><div class="mc-unit">µg/m³ avg</div></div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--muted)">City:</span>
+          <select class="sel" id="city-filter" onchange="filterStations()"><option value="all">All Cities</option><option>Delhi</option><option>Faridabad</option><option>Ghaziabad</option><option>Greater Noida</option><option>Gurugram</option><option>Noida</option></select>
+          <span style="font-size:11px;color:var(--muted)">Pollutant:</span>
+          <select class="sel" id="poll-filter" onchange="filterStations()"><option value="all">All Pollutants</option><option>PM2.5</option><option>PM10</option><option>NO2</option><option>SO2</option><option>CO</option><option>OZONE</option><option>NH3</option></select>
+          <span id="st-count" style="font-size:11px;color:var(--muted)"></span>
+        </div>
+        <div class="st-grid">
+          <div class="panel">
+            <div class="ph"><h3>📍 NCR Monitoring Stations</h3></div>
+            <div id="station-map"></div>
+            <div style="padding:8px 13px;display:flex;align-items:center;gap:8px;border-top:1px solid var(--border)">
+              <span style="font-size:11px;color:var(--muted)">Pollutant:</span>
+              <select class="sel" id="poll-chart-sel" onchange="buildPollChart()"><option>PM2.5</option><option>PM10</option><option>NO2</option><option>SO2</option><option>CO</option><option>OZONE</option><option>NH3</option></select>
+            </div>
+            <div class="cw" style="height:190px"><canvas id="pollChart"></canvas></div>
+          </div>
+          <div class="panel" style="overflow:hidden">
+            <div class="ph"><h3>📋 Station Data Table</h3><span id="st-tbl-info" style="font-size:10px;color:var(--muted)"></span></div>
+            <div style="overflow:auto;max-height:600px">
+              <table class="dtable">
+                <thead><tr><th>City</th><th>Station</th><th>Pollutant</th><th>Avg</th><th>Min</th><th>Max</th></tr></thead>
+                <tbody id="st-tbody"><tr><td colspan="6" style="text-align:center;color:var(--muted);padding:18px">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════ AI INSIGHTS ═══════ -->
+      <div class="view" id="view-xai">
+        <div class="model-tiles">
+          <div class="mt"><div class="mt-val">RF</div><div class="mt-lab">Model Type</div></div>
+          <div class="mt"><div class="mt-val">300</div><div class="mt-lab">Decision Trees</div></div>
+          <div class="mt"><div class="mt-val">9</div><div class="mt-lab">Input Features</div></div>
+          <div class="mt"><div class="mt-val">80/20</div><div class="mt-lab">Train / Test</div></div>
+        </div>
+        <div class="xai-grid">
+          <div class="panel"><div class="ph"><h3>🧠 Feature Importance — Top 5</h3></div><div class="pb" id="xai-bars"></div></div>
+          <div class="panel"><div class="ph"><h3>📊 All 9 Features Ranked</h3></div><div class="cw" style="height:280px"><canvas id="xaiChart"></canvas></div></div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>📋 Feature Descriptions</h3></div>
+          <table class="dtable">
+            <thead><tr><th>Feature</th><th>Description</th><th>Importance</th></tr></thead>
+            <tbody>
+              <tr><td><strong>aqi_rolling_7</strong></td><td>7-day rolling mean — dominant weekly trend signal</td><td><span class="pb-badge" style="background:#1d4ed8">51.4%</span></td></tr>
+              <tr><td><strong>aqi_lag_1</strong></td><td>Yesterday's AQI — strongest single-day predictor</td><td><span class="pb-badge" style="background:#2563eb">20.7%</span></td></tr>
+              <tr><td><strong>aqi_rolling_3</strong></td><td>3-day rolling mean — short-term trend</td><td><span class="pb-badge" style="background:#3b82f6">8.4%</span></td></tr>
+              <tr><td><strong>month</strong></td><td>Calendar month — captures seasonal cycles</td><td><span class="pb-badge" style="background:#60a5fa">5.0%</span></td></tr>
+              <tr><td><strong>day</strong></td><td>Day of month</td><td><span class="pb-badge" style="background:#1e2d45;color:var(--text)">3.8%</span></td></tr>
+              <tr><td><strong>aqi_lag_7</strong></td><td>AQI 7 days ago</td><td><span class="pb-badge" style="background:#1e2d45;color:var(--text)">3.7%</span></td></tr>
+              <tr><td><strong>aqi_lag_3</strong></td><td>AQI 3 days ago</td><td><span class="pb-badge" style="background:#1e2d45;color:var(--text)">3.1%</span></td></tr>
+              <tr><td><strong>year</strong></td><td>Calendar year — long-term trend</td><td><span class="pb-badge" style="background:#1e2d45;color:var(--text)">2.2%</span></td></tr>
+              <tr><td><strong>day_of_week</strong></td><td>Day of week (Mon=0, Sun=6)</td><td><span class="pb-badge" style="background:#1e2d45;color:var(--text)">1.7%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <!-- ═══════ SYSTEM ═══════ -->
+      <div class="view" id="view-system">
+        <div class="pipe-grid">
+          <div class="pi"><span class="pi-icon">📡</span><div><div class="pi-name">CPCB Historical AQI</div><div class="pi-status">✓ Connected</div></div></div>
+          <div class="pi"><span class="pi-icon">🌦️</span><div><div class="pi-name">ERA5 Weather Data</div><div class="pi-status">✓ Available</div></div></div>
+          <div class="pi"><span class="pi-icon">🧹</span><div><div class="pi-name">Data Cleaning Pipeline</div><div class="pi-status">✓ Processed</div></div></div>
+          <div class="pi"><span class="pi-icon">🌲</span><div><div class="pi-name">Random Forest Model</div><div class="pi-status">✓ Trained</div></div></div>
+          <div class="pi"><span class="pi-icon">🔮</span><div><div class="pi-name">3-Day AQI Forecast</div><div class="pi-status">✓ Generated</div></div></div>
+          <div class="pi"><span class="pi-icon">🧠</span><div><div class="pi-name">Explainable AI (XAI)</div><div class="pi-status">✓ Enabled</div></div></div>
+          <div class="pi"><span class="pi-icon">🚨</span><div><div class="pi-name">Early Warning System</div><div class="pi-status">✓ Active</div></div></div>
+          <div class="pi"><span class="pi-icon">📍</span><div><div class="pi-name">Station Monitoring</div><div class="pi-status">✓ Live — 408 readings</div></div></div>
+          <div class="pi"><span class="pi-icon">🌐</span><div><div class="pi-name">Flask REST API</div><div class="pi-status">✓ Running :5000</div></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="panel">
+            <div class="ph"><h3>📊 Data Summary</h3></div>
+            <table class="dtable"><tbody>
+              <tr><td style="color:var(--muted)">Historical AQI records</td><td><strong>3,143 days</strong></td></tr>
+              <tr><td style="color:var(--muted)">Date range</td><td><strong>May 2015 – Dec 2023</strong></td></tr>
+              <tr><td style="color:var(--muted)">CPCB station readings</td><td><strong>408 records</strong></td></tr>
+              <tr><td style="color:var(--muted)">NCR cities</td><td><strong>6</strong></td></tr>
+              <tr><td style="color:var(--muted)">Pollutants tracked</td><td><strong>7 (PM2.5, PM10, NO2, SO2, CO, O₃, NH₃)</strong></td></tr>
+              <tr><td style="color:var(--muted)">Forecast horizon</td><td><strong>3 days</strong></td></tr>
+            </tbody></table>
+          </div>
+          <div class="panel">
+            <div class="ph"><h3>🔌 API Endpoints</h3></div>
+            <table class="dtable"><thead><tr><th>Endpoint</th><th>Returns</th></tr></thead><tbody>
+              <tr><td><code style="color:var(--accent)">GET /</code></td><td>Dashboard (this page)</td></tr>
+              <tr><td><code style="color:var(--accent)">GET /api/data</code></td><td>Historical + forecast JSON</td></tr>
+              <tr><td><code style="color:var(--accent)">GET /api/stations</code></td><td>CPCB station readings JSON</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /scroll -->
+  </div><!-- /main -->
+</div><!-- /shell -->
+
+<script>
+// @ts-nocheck
+/* eslint-disable */
+const _d         = JSON.parse(document.getElementById('app-data').textContent);
+const HIST_DATES  = _d.hist_dates;
+const HIST_VALUES = _d.hist_values;
+const LATEST_AQI  = _d.latest_aqi;
+const LATEST_CAT  = _d.latest_cat;
+const LATEST_DATE = _d.latest_date;
+const WARN = _d.warn.map(w=>({date:w.date,aqi:w.predicted_aqi,cat:w.category,alert:w.alert}));
+
+const MONTH_AVG=[316.1,254.7,196.1,209.6,204.9,172.4,108.6,103.4,123.9,242.9,348.6,334.9];
+const YEAR_AVG={2015:229.5,2016:256.4,2017:227.5,2018:225.4,2019:214.6,2020:185.1,2021:208.6,2022:209.2,2023:203.6};
+const DOW_AVG=[213.7,215.3,218.6,221.7,220.1,215.9,214.7];
+const CAT_DIST={Good:14,Satisfactory:496,Moderate:985,Poor:886,'Very Poor':615,Severe:147};
+const ALL_IMP=[{f:'aqi_rolling_7',i:.514},{f:'aqi_lag_1',i:.207},{f:'aqi_rolling_3',i:.084},{f:'month',i:.050},{f:'day',i:.038},{f:'aqi_lag_7',i:.037},{f:'aqi_lag_3',i:.031},{f:'year',i:.022},{f:'day_of_week',i:.017}];
+const YEAR_LIST=[2015,2016,2017,2018,2019,2020,2021,2022,2023];
+const YOY_COLORS=['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#84cc16','#f97316'];
+const PC={'PM2.5':'#ef4444','PM10':'#f97316','NO2':'#f59e0b','SO2':'#84cc16','CO':'#3b82f6','OZONE':'#8b5cf6','NH3':'#ec4899'};
+
+const ac=v=>v<=50?'#22c55e':v<=100?'#84cc16':v<=200?'#f59e0b':v<=300?'#f97316':v<=400?'#ef4444':'#a855f7';
+const cc=c=>({'Good':'#22c55e','Satisfactory':'#84cc16','Moderate':'#f59e0b','Poor':'#f97316','Very Poor':'#ef4444','Severe':'#a855f7'})[c]||'#64748b';
+const gc=v=>v<=50?'Good':v<=100?'Satisfactory':v<=200?'Moderate':v<=300?'Poor':v<=400?'Very Poor':'Severe';
+const pc=p=>PC[p]||'#64748b';
+
+Chart.defaults.color='#64748b';
+Chart.defaults.borderColor='#1e2d45';
+
+function animCount(el,target,dur=750){
+  const t0=performance.now();
+  (function s(now){const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e);if(p<1)requestAnimationFrame(s);else el.textContent=Math.round(target);})(t0);
+}
+
+// Clock
+function tick(){
+  const n=new Date();
+  document.getElementById('top-time').textContent=n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('top-date').textContent=n.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+}
+tick(); setInterval(tick,1000);
+
+// Nav
+const built={};
+let stLoaded=false,allStations=[],mapMarkers=[],mapMarkers2=[],pollChartInst=null;
+
+function switchView(name){
+  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.view===name));
+  document.querySelectorAll('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+name));
+  if(name==='history'  && !built.history)  {buildHistView();  built.history=true;}
+  if(name==='forecast' && !built.forecast) {buildFcView();    built.forecast=true;}
+  if(name==='xai'      && !built.xai)      {buildXaiView();   built.xai=true;}
+  if(name==='stations'){if(!leafMap2)initMap2();if(!stLoaded)loadStations();setTimeout(()=>{leafMap2&&leafMap2.invalidateSize();},260);}
+}
+document.querySelectorAll('.nav-item').forEach(el=>el.addEventListener('click',()=>switchView(el.dataset.view)));
+
+// ── OVERVIEW ──────────────────────────────────────────────────────────────────
+function initOverview(){
+  animCount(document.getElementById('m-aqi-val'),LATEST_AQI);
+  animCount(document.getElementById('m-f1-val'),WARN[0].aqi);
+  animCount(document.getElementById('m-f2-val'),WARN[1].aqi);
+
+  const aCol=cc(LATEST_CAT);
+  const b=document.getElementById('m-aqi-badge');
+  b.textContent=LATEST_CAT; b.style.background=aCol;
+  document.getElementById('m-aqi-val').style.color=aCol;
+  document.getElementById('m-aqi-trend').textContent='as of '+LATEST_DATE;
+
+  [0,1].forEach(i=>{
+    const col=cc(WARN[i].cat);
+    const badge=document.getElementById('m-f'+(i+1)+'-badge');
+    badge.textContent=WARN[i].cat; badge.style.background=col;
+    document.getElementById('m-f'+(i+1)+'-val').style.color=col;
+    document.getElementById('m-f'+(i+1)+'-date').textContent=WARN[i].date;
+  });
+
+  const rEl=document.getElementById('m-risk-val');
+  rEl.textContent=WARN[0].cat; rEl.style.color=cc(WARN[0].cat);
+  document.getElementById('m-risk-alert').textContent=WARN[0].alert;
+  document.getElementById('cta-sub').textContent=WARN[0].alert;
+
+  // Alerts
+  document.getElementById('alert-list').innerHTML=[
+    {title:'High AQI in Delhi-NCR',sub:'AQI '+LATEST_AQI+' · '+LATEST_CAT,time:'Latest',col:cc(LATEST_CAT)},
+    {title:'Forecast: '+WARN[0].cat+' tomorrow',sub:'Predicted AQI '+WARN[0].aqi,time:WARN[0].date,col:cc(WARN[0].cat)},
+    {title:'3-Day Outlook',sub:'AQI reducing: '+Math.round(WARN[0].aqi)+' → '+Math.round(WARN[2].aqi),time:WARN[2].date,col:'#f59e0b'}
+  ].map(a=>`<div class="ai"><div class="ai-dot" style="background:${a.col}"></div><div class="ai-info"><div class="ai-title">${a.title}</div><div class="ai-sub">${a.sub}</div></div><div class="ai-time">${a.time}</div></div>`).join('');
+
+  // Hotspots
+  const rows=[
+    {name:'Delhi NCR (Latest)',aqi:LATEST_AQI,tr:'↑'},
+    {name:'Forecast D+1',aqi:WARN[0].aqi,tr:'↔'},
+    {name:'Forecast D+2',aqi:WARN[1].aqi,tr:'↓'},
+    {name:'Forecast D+3',aqi:WARN[2].aqi,tr:'↓'}
+  ];
+  document.getElementById('hotspot-tbody').innerHTML=rows.map(r=>{
+    const col=ac(r.aqi);
+    return `<tr><td>${r.name}</td><td><span class="aqi-pill" style="background:${col}">${Math.round(r.aqi)}</span></td><td style="color:${col}">${r.tr}</td><td><span class="s-badge" style="background:${cc(gc(r.aqi))}">${gc(Math.round(r.aqi))}</span></td></tr>`;
+  }).join('');
+
+  // Mini trend
+  const d=HIST_DATES.slice(-30),v=HIST_VALUES.slice(-30);
+  new Chart(document.getElementById('trendChart'),{
+    type:'line',
+    data:{labels:d,datasets:[{label:'AQI',data:v,borderColor:'#3b82f6',borderWidth:1.5,pointRadius:0,tension:0.3,fill:true,
+      backgroundColor:ctx=>{const a=ctx.chart.chartArea;if(!a)return 'rgba(59,130,246,.08)';const g=ctx.chart.ctx.createLinearGradient(0,a.top,0,a.bottom);g.addColorStop(0,'rgba(59,130,246,.22)');g.addColorStop(1,'rgba(59,130,246,.01)');return g;}}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'AQI: '+ctx.parsed.y+' ('+gc(ctx.parsed.y)+')'}}},
+      scales:{x:{display:false},y:{min:0,ticks:{color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.7)'}}}}
+  });
+
+  // 72h bar
+  new Chart(document.getElementById('fc72Chart'),{
+    type:'bar',
+    data:{labels:WARN.map(w=>w.date),datasets:[{data:WARN.map(w=>w.aqi),backgroundColor:WARN.map(w=>ac(w.aqi)),borderRadius:7,barThickness:38}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>gc(ctx.parsed.y)+': '+ctx.parsed.y}}},
+      scales:{x:{ticks:{color:'#64748b',font:{size:10}},grid:{display:false}},y:{min:0,ticks:{color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.7)'}}}}
+  });
+
+  // Init map in overview
+  initMap();
+  loadStationMetrics();
+}
+
+function loadStationMetrics(){
+  fetch('/api/stations').then(r=>r.json()).then(data=>{
+    allStations=data;
+    const avg=poll=>{const rows=data.filter(r=>r.pollutant_id===poll&&r.pollutant_avg!=null);return rows.length?(rows.reduce((s,r)=>s+r.pollutant_avg,0)/rows.length).toFixed(1):'—';};
+    document.getElementById('m-pm25-val').textContent=avg('PM2.5');
+    document.getElementById('m-pm25-sub').textContent='µg/m³ avg across NCR';
+    document.getElementById('wx-pm25').textContent=avg('PM2.5');
+    document.getElementById('wx-pm10').textContent=avg('PM10');
+    document.getElementById('wx-no2').textContent=avg('NO2');
+    const stn=new Set(data.map(r=>r.station));
+    document.getElementById('wx-st').textContent=stn.size;
+    document.getElementById('st-badge').textContent=stn.size+' stations · '+data.length+' readings';
+    renderMarkers(data);
+  }).catch(()=>{});
+}
+
+// ── MAP ────────────────────────────────────────────────────────────────────────
+// Two separate Leaflet instances: one for Overview, one for Stations tab
+let leafMap=null, leafMap2=null;
+
+const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_OPT = {attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19};
+
+function initMap(){
+  // Overview map
+  if(!leafMap && document.getElementById('live-map')){
+    leafMap=L.map('live-map').setView([28.62,77.2],10);
+    L.tileLayer(TILE_URL,TILE_OPT).addTo(leafMap);
+  }
+}
+
+function initMap2(){
+  // Stations tab map
+  if(!leafMap2 && document.getElementById('station-map')){
+    leafMap2=L.map('station-map').setView([28.62,77.2],10);
+    L.tileLayer(TILE_URL,TILE_OPT).addTo(leafMap2);
+  }
+}
+
+function renderMarkers(data){
+  // Render on whichever maps are initialised
+  [leafMap, leafMap2].forEach((map, mi) => {
+    if(!map) return;
+    // clear existing markers for this map
+    if(mi===0) { mapMarkers.forEach(m=>m.remove()); mapMarkers=[]; }
+    else        { mapMarkers2.forEach(m=>m.remove()); mapMarkers2=[]; }
+
+    const groups={};
+    data.forEach(r=>{
+      if(!groups[r.station]) groups[r.station]={city:r.city,lat:parseFloat(r.latitude),lon:parseFloat(r.longitude),polls:[]};
+      groups[r.station].polls.push(r);
+    });
+    Object.entries(groups).forEach(([st,s])=>{
+      if(isNaN(s.lat)||isNaN(s.lon)) return;
+      let pop=`<div style="background:#111827;padding:6px;min-width:155px;color:#e2e8f0"><b>${st}</b><br><span style="color:#94a3b8;font-size:10px">${s.city}</span><hr style="border-color:#1e2d45;margin:5px 0">`;
+      s.polls.forEach(p=>{pop+=`<span style="color:${pc(p.pollutant_id)};font-weight:700;font-size:11px">${p.pollutant_id}</span>: <b>${p.pollutant_avg}</b> µg/m³<br>`;});
+      pop+='</div>';
+      const pm=s.polls.find(p=>p.pollutant_id==='PM2.5');
+      const fc=pm?ac(pm.pollutant_avg||0):'#3b82f6';
+      const m=L.circleMarker([s.lat,s.lon],{radius:9,fillColor:fc,color:'#0b0f1a',weight:1.5,opacity:1,fillOpacity:.85}).addTo(map);
+      m.bindPopup(pop);
+      if(mi===0) mapMarkers.push(m); else mapMarkers2.push(m);
+    });
+  });
+}
+
+// ── FORECAST ───────────────────────────────────────────────────────────────────
+function buildFcView(){
+  WARN.forEach((w,i)=>{
+    const col=cc(w.cat);
+    document.getElementById('fd'+i+'-date').textContent=w.date;
+    const vEl=document.getElementById('fd'+i+'-val'); vEl.textContent=Math.round(w.aqi); vEl.style.color=col;
+    const bEl=document.getElementById('fd'+i+'-badge'); bEl.textContent=w.cat; bEl.style.background=col;
+    document.getElementById('fd'+i+'-alert').textContent=w.alert;
+  });
+
+  document.getElementById('warn-cards').innerHTML=WARN.map(w=>{
+    const col=cc(w.cat);
+    return `<div style="background:var(--card2);border:1px solid ${col}44;border-left:4px solid ${col};border-radius:9px;padding:12px"><div style="font-weight:700;color:${col};margin-bottom:3px;font-size:12px">${w.date} — ${w.cat}</div><div style="font-size:11px;color:var(--muted)">AQI: <strong style="color:var(--text)">${w.aqi}</strong></div><div style="font-size:10px;color:var(--muted);margin-top:3px">${w.alert}</div></div>`;
+  }).join('');
+
+  const l30d=HIST_DATES.slice(-30),l30v=HIST_VALUES.slice(-30);
+  const fd=WARN.map(w=>w.date),fv=WARN.map(w=>w.aqi);
+  new Chart(document.getElementById('fcLineChart'),{
+    type:'line',
+    data:{labels:[...l30d,...fd],datasets:[
+      {label:'Historical',data:[...l30v,...new Array(3).fill(null)],borderColor:'#3b82f6',borderWidth:2,pointRadius:0,tension:0.3,fill:false},
+      {label:'Forecast', data:[...new Array(30).fill(null),...fv],borderColor:'#ef4444',borderWidth:2,borderDash:[5,4],pointRadius:5,pointBackgroundColor:'#ef4444',tension:0.2,fill:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:'#94a3b8',font:{size:10},usePointStyle:true}}},
+      scales:{x:{ticks:{maxTicksLimit:8,color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.6)'}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+  new Chart(document.getElementById('fcBarChart'),{
+    type:'bar',
+    data:{labels:fd,datasets:[{data:fv,backgroundColor:fv.map(ac),borderRadius:10,barThickness:56}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>gc(ctx.parsed.y)+': '+ctx.parsed.y}}},
+      scales:{x:{ticks:{color:'#64748b',font:{size:11}},grid:{display:false}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+// ── HISTORY ────────────────────────────────────────────────────────────────────
+let histInst=null,yoyInst=null;
+
+function buildHistView(){
+  buildHistChart(HIST_DATES,HIST_VALUES);
+  buildMonthly(); buildDow(); buildDonut();
+  const wrap=document.getElementById('yoy-checks');
+  YEAR_LIST.forEach((yr,idx)=>{
+    const lbl=document.createElement('label');
+    lbl.style.cssText='display:flex;align-items:center;gap:3px;font-size:10px;color:#94a3b8;cursor:pointer';
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.value=yr; cb.checked=[2020,2021,2022,2023].includes(yr); cb.style.accentColor=YOY_COLORS[idx];
+    cb.addEventListener('change',buildYoY);
+    lbl.appendChild(cb); lbl.append(' '+yr); wrap.appendChild(lbl);
+  });
+  buildYoY();
+}
+
+function buildHistChart(dates,values){
+  if(histInst) histInst.destroy();
+  histInst=new Chart(document.getElementById('histChart'),{
+    type:'line',
+    data:{labels:dates,datasets:[{label:'AQI',data:values,borderColor:'#3b82f6',borderWidth:1.5,pointRadius:0,pointHoverRadius:4,tension:0.2,fill:true,
+      backgroundColor:ctx=>{const a=ctx.chart.chartArea;if(!a)return 'rgba(59,130,246,.06)';const g=ctx.chart.ctx.createLinearGradient(0,a.top,0,a.bottom);g.addColorStop(0,'rgba(59,130,246,.2)');g.addColorStop(1,'rgba(59,130,246,.01)');return g;}}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'AQI: '+ctx.parsed.y+' ('+gc(ctx.parsed.y)+')'}}},
+      scales:{x:{ticks:{maxTicksLimit:10,color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.6)'}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+function applyHistFilter(){
+  const from=parseInt(document.getElementById('hist-from').value),to=parseInt(document.getElementById('hist-to').value);
+  if(from>to){alert('From must be ≤ To');return;}
+  const fd=[],fv=[];
+  HIST_DATES.forEach((d,i)=>{const yr=parseInt(d.slice(0,4));if(yr>=from&&yr<=to){fd.push(d);fv.push(HIST_VALUES[i]);}});
+  buildHistChart(fd,fv);
+}
+function resetHistFilter(){document.getElementById('hist-from').value='2015';document.getElementById('hist-to').value='2023';buildHistChart(HIST_DATES,HIST_VALUES);}
+
+function buildYoY(){
+  const checked=[...document.querySelectorAll('#yoy-checks input:checked')].map(cb=>parseInt(cb.value));
+  if(!checked.length){if(yoyInst){yoyInst.destroy();yoyInst=null;}return;}
+  const byYear={};
+  HIST_DATES.forEach((d,i)=>{const yr=parseInt(d.slice(0,4));if(!byYear[yr])byYear[yr]=new Array(366).fill(null);const doy=Math.floor((new Date(d)-new Date(yr,0,1))/86400000);byYear[yr][doy]=HIST_VALUES[i];});
+  if(yoyInst) yoyInst.destroy();
+  yoyInst=new Chart(document.getElementById('yoyChart'),{
+    type:'line',
+    data:{labels:Array.from({length:365},(_,i)=>i+1),datasets:checked.map(yr=>({label:String(yr),data:(byYear[yr]||[]).slice(0,365),borderColor:YOY_COLORS[YEAR_LIST.indexOf(yr)%9],borderWidth:1.5,pointRadius:0,tension:0.3,fill:false,spanGaps:true}))},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:'#94a3b8',font:{size:9},usePointStyle:true}}},
+      scales:{x:{title:{display:true,text:'Day of Year',color:'#64748b',font:{size:9}},ticks:{maxTicksLimit:12,color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.6)'}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+function buildMonthly(){
+  new Chart(document.getElementById('monthlyChart'),{
+    type:'bar',
+    data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],datasets:[{data:MONTH_AVG,backgroundColor:MONTH_AVG.map(ac),borderRadius:5,barThickness:20}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Avg AQI: '+ctx.parsed.y+' ('+gc(ctx.parsed.y)+')'}}},
+      scales:{x:{ticks:{color:'#64748b',font:{size:9}},grid:{display:false}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+function buildDow(){
+  new Chart(document.getElementById('dowChart'),{
+    type:'bar',
+    data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],datasets:[{data:DOW_AVG,backgroundColor:DOW_AVG.map(ac),borderRadius:5,barThickness:28}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{x:{ticks:{color:'#64748b'},grid:{display:false}},y:{min:205,max:225,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+function buildDonut(){
+  const cats=Object.keys(CAT_DIST),vals=Object.values(CAT_DIST);
+  new Chart(document.getElementById('donutChart'),{
+    type:'doughnut',
+    data:{labels:cats,datasets:[{data:vals,backgroundColor:cats.map(cc),borderWidth:2,borderColor:'#111827',hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{position:'right',labels:{color:'#94a3b8',font:{size:10},padding:10,usePointStyle:true}},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed} days (${(ctx.parsed/3143*100).toFixed(1)}%)`}}}}
+  });
+}
+
+// ── STATIONS ───────────────────────────────────────────────────────────────────
+function loadStations(){
+  fetch('/api/stations').then(r=>r.json()).then(data=>{
+    allStations=data; stLoaded=true;
+    renderStTable(data);
+    renderMarkers(data);
+    buildPollChart();
+    // Populate pollutant summary tiles
+    const pollIds=['PM2.5','PM10','NO2','SO2','CO','OZONE','NH3'];
+    const tileIds=['pt-pm25','pt-pm10','pt-no2','pt-so2','pt-co','pt-ozone','pt-nh3'];
+    pollIds.forEach((poll,i)=>{
+      const rows=data.filter(r=>r.pollutant_id===poll&&r.pollutant_avg!=null);
+      const avg=rows.length?(rows.reduce((s,r)=>s+r.pollutant_avg,0)/rows.length).toFixed(1):'—';
+      const el=document.getElementById(tileIds[i]);
+      if(el) el.textContent=avg;
+    });
+  }).catch(()=>{document.getElementById('st-tbody').innerHTML='<tr><td colspan="6" style="text-align:center;color:#ef4444;padding:18px">Could not load data.</td></tr>';});
+}
+
+function filterStations(){
+  const city=document.getElementById('city-filter').value,poll=document.getElementById('poll-filter').value;
+  const f=allStations.filter(r=>(city==='all'||r.city===city)&&(poll==='all'||r.pollutant_id===poll));
+  renderStTable(f); renderMarkers(f);
+}
+
+function renderStTable(data){
+  const tbody=document.getElementById('st-tbody');
+  tbody.innerHTML='';
+  data.forEach(row=>{
+    const col=pc(row.pollutant_id),tr=document.createElement('tr');
+    tr.innerHTML=`<td>${row.city||'—'}</td><td style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${row.station||''}">${row.station||'—'}</td><td><span class="pb-badge" style="background:${col}">${row.pollutant_id||'—'}</span></td><td><strong>${row.pollutant_avg??'—'}</strong></td><td>${row.pollutant_min??'—'}</td><td>${row.pollutant_max??'—'}</td>`;
+    tbody.appendChild(tr);
+  });
+  const infoEl=document.getElementById('st-tbl-info');
+  if(infoEl) infoEl.textContent=data.length+' readings';
+  const cntEl=document.getElementById('st-count');
+  if(cntEl) cntEl.textContent=data.length+' readings';
+}
+
+function buildPollChart(){
+  if(!allStations.length) return;
+  const sel=document.getElementById('poll-chart-sel').value;
+  const cities=['Delhi','Faridabad','Ghaziabad','Greater Noida','Gurugram','Noida'];
+  const vals=cities.map(city=>{const rows=allStations.filter(r=>r.city===city&&r.pollutant_id===sel&&r.pollutant_avg!=null);return rows.length?+(rows.reduce((s,r)=>s+r.pollutant_avg,0)/rows.length).toFixed(1):null;});
+  const col=pc(sel);
+  if(pollChartInst) pollChartInst.destroy();
+  pollChartInst=new Chart(document.getElementById('pollChart'),{
+    type:'bar',
+    data:{labels:cities,datasets:[{label:sel+' avg (µg/m³)',data:vals,backgroundColor:col+'cc',borderColor:col,borderWidth:1,borderRadius:5,barThickness:24}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+' µg/m³'}}},
+      scales:{x:{ticks:{color:'#64748b',font:{size:9}},grid:{display:false}},y:{min:0,ticks:{color:'#64748b'},grid:{color:'rgba(30,45,69,.6)'}}}}
+  });
+}
+
+// ── XAI ────────────────────────────────────────────────────────────────────────
+function buildXaiView(){
+  const el=document.getElementById('xai-bars');
+  el.innerHTML=ALL_IMP.slice(0,5).map(f=>`<div class="xai-item"><div class="xai-hd"><strong style="color:var(--text)">${f.f}</strong><span>${(f.i*100).toFixed(1)}%</span></div><div class="xai-track"><div class="xai-fill" data-w="${f.i*100}"></div></div></div>`).join('');
+  setTimeout(()=>{el.querySelectorAll('.xai-fill').forEach(b=>{b.style.width=Math.min(parseFloat(b.dataset.w),100)+'%';});},200);
+
+  new Chart(document.getElementById('xaiChart'),{
+    type:'bar',
+    data:{labels:ALL_IMP.map(f=>f.f),datasets:[{data:ALL_IMP.map(f=>+(f.i*100).toFixed(2)),backgroundColor:['#1d4ed8','#2563eb','#3b82f6','#60a5fa','#93c5fd','#bfdbfe','#1e3a5f','#172848','#0d1322'],borderRadius:4,barThickness:16}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.x.toFixed(1)+'%'}}},
+      scales:{x:{min:0,ticks:{callback:v=>v+'%',color:'#64748b',font:{size:9}},grid:{color:'rgba(30,45,69,.6)'}},y:{ticks:{color:'#e2e8f0',font:{size:10}},grid:{display:false}}}}
+  });
+}
+
+// ── SIMULATION MODE ────────────────────────────────────────────────────────────
+let simActive = false;
+
+// Scenario presets
+const SIM_SCENARIOS = [
+  { label:'Severe Spike',   badge:'Severe',    col:'#a855f7', aqi:480, f1:462, f2:445, f3:428, desc:'Worst-case winter episode' },
+  { label:'Moderate Day',   badge:'Moderate',  col:'#f59e0b', aqi:168, f1:155, f2:142, f3:135, desc:'Average monsoon conditions' },
+  { label:'Good Air Day',   badge:'Good',      col:'#22c55e', aqi:38,  f1:42,  f2:45,  f3:40,  desc:'Post-rain clean air day' },
+];
+let simIdx = 0;
+
+function toggleSim(){
+  simActive = !simActive;
+  const card  = document.getElementById('sim-card');
+  const val   = document.getElementById('sim-val');
+  const badge = document.getElementById('sim-badge');
+  const desc  = document.getElementById('sim-desc');
+  const unit  = document.getElementById('sim-unit');
+  const icon  = document.getElementById('sim-icon');
+
+  if(simActive){
+    const s = SIM_SCENARIOS[simIdx % SIM_SCENARIOS.length];
+    simIdx++;
+
+    // Style the sim card
+    card.style.borderColor  = s.col;
+    card.style.background   = s.col + '18';
+    icon.style.background   = s.col + '33';
+    icon.textContent        = '⚡';
+    val.textContent         = 'ON';
+    val.style.color         = s.col;
+    badge.textContent       = s.label;
+    badge.style.background  = s.col;
+    desc.textContent        = s.desc;
+    unit.textContent        = 'Click to cycle / turn off';
+
+    // Override the 5 metric KPI cards with simulated values
+    applySimValues(s);
+
+    // Flash banner
+    showSimBanner(s);
+  } else {
+    // Restore real data
+    card.style.borderColor  = 'var(--border)';
+    card.style.background   = 'var(--card)';
+    icon.style.background   = 'rgba(100,116,139,.15)';
+    icon.textContent        = '🎮';
+    val.textContent         = 'OFF';
+    val.style.color         = 'var(--muted)';
+    badge.textContent       = 'Normal';
+    badge.style.background  = 'var(--muted)';
+    desc.textContent        = 'Real data mode';
+    unit.textContent        = 'Click to simulate';
+
+    restoreRealValues();
+    removeSimBanner();
+  }
+}
+
+function applySimValues(s){
+  // AQI card
+  animCount(document.getElementById('m-aqi-val'), s.aqi);
+  document.getElementById('m-aqi-val').style.color = s.col;
+  const ab = document.getElementById('m-aqi-badge');
+  ab.textContent = s.badge; ab.style.background = s.col;
+  document.getElementById('m-aqi-trend').textContent = '⚡ Simulated scenario';
+
+  // Forecast cards
+  const fVals = [s.f1, s.f2, s.f3];
+  [1,2].forEach(i=>{
+    animCount(document.getElementById('m-f'+i+'-val'), fVals[i-1]);
+    document.getElementById('m-f'+i+'-val').style.color = ac(fVals[i-1]);
+    const fb = document.getElementById('m-f'+i+'-badge');
+    fb.textContent = gc(fVals[i-1]); fb.style.background = ac(fVals[i-1]);
+  });
+
+  // Risk
+  const rEl = document.getElementById('m-risk-val');
+  rEl.textContent = s.badge; rEl.style.color = s.col;
+  document.getElementById('m-risk-alert').textContent = '⚡ ' + s.desc;
+}
+
+function restoreRealValues(){
+  animCount(document.getElementById('m-aqi-val'), LATEST_AQI);
+  document.getElementById('m-aqi-val').style.color = cc(LATEST_CAT);
+  const ab = document.getElementById('m-aqi-badge');
+  ab.textContent = LATEST_CAT; ab.style.background = cc(LATEST_CAT);
+  document.getElementById('m-aqi-trend').textContent = 'as of ' + LATEST_DATE;
+
+  [0,1].forEach(i=>{
+    animCount(document.getElementById('m-f'+(i+1)+'-val'), WARN[i].aqi);
+    document.getElementById('m-f'+(i+1)+'-val').style.color = cc(WARN[i].cat);
+    const fb = document.getElementById('m-f'+(i+1)+'-badge');
+    fb.textContent = WARN[i].cat; fb.style.background = cc(WARN[i].cat);
+  });
+
+  const rEl = document.getElementById('m-risk-val');
+  rEl.textContent = WARN[0].cat; rEl.style.color = cc(WARN[0].cat);
+  document.getElementById('m-risk-alert').textContent = WARN[0].alert;
+}
+
+function showSimBanner(s){
+  removeSimBanner();
+  const banner = document.createElement('div');
+  banner.id = 'sim-banner';
+  banner.style.cssText = `
+    position:fixed;top:44px;left:196px;right:0;z-index:300;
+    background:${s.col}22;border-bottom:2px solid ${s.col};
+    padding:6px 18px;display:flex;align-items:center;gap:10px;
+    font-size:12px;color:${s.col};font-weight:600;
+    animation:fi .3s ease;
+  `;
+  banner.innerHTML = `<span>⚡ SIMULATION MODE ACTIVE — ${s.label}: ${s.desc}</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">Click the Simulation KPI card again to cycle or turn off</span>`;
+  document.body.appendChild(banner);
+}
+
+function removeSimBanner(){
+  const b = document.getElementById('sim-banner');
+  if(b) b.remove();
+}
+
+// ── BOOT ────────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',initOverview);
+</script>
+</body>
+</html>
